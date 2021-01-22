@@ -29,6 +29,7 @@ guide_schema = GuideSchema()
 guides_schema = GuideSchema(many=True)
 
 # End point to create a new guide
+
 @app.route('/guide', methods=["POST"])
 def add_guide():
     title = request.json['title']
@@ -42,6 +43,14 @@ def add_guide():
     guide = Guide.query.get(new_guide.id)
 
     return guide_schema.jsonify(guide)
+
+# Endpoint to query all quides
+
+@app.route("/guides", methods=["GET"])
+def get_guides():
+    all_guides = Guide.query.all()
+    result = guides_schema.dump(all_guides)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
