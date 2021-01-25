@@ -16,6 +16,45 @@ $ pipenv shell
 (hello_flask) pipenv install
 (hello_flask) pipenv app.py
 ```
+## Database Setup
+
+- If you need to setup your database do the following inside python repl while in your pipenv shell
+- You will get a warning but it is ok as long as there is no Error
+
+```
+>>> from fileName import db
+>>> db.create_all()
+
+```
+
+## Routes
+
+### GET ALL GUIDES
+- url: localhost:5000/guides
+
+### GET SINGLE GUIDE
+- url: localhost:5000/guides/ID
+
+### POST
+- url: localhost:5000/guide
+```json
+body: {
+	"title": "New York Pizza",
+	"content": "$12"
+}
+```
+
+### PUT
+- url: localhost:5000/guide/ID
+```json
+body: {
+	"title": "New York Pizza",
+	"content": "$12"
+}
+```
+
+### DELETE
+- url: localhost:5000/guide/ID
 
 ## Dependencies
 
@@ -38,3 +77,4 @@ $ pipenv shell
   "python.pythonPath": "/YOUR_VIRTUALENV_PATH/bin/python3"
 }
 ```
+
